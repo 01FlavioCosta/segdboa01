@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>SegD’boa - Segurança Inteligente para Condomínios</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    /* Reset e configurações básicas */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header */
+    header {
+      background: #1a1a1a;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    header .logo img {
+      max-width: 100px;
+      margin-right: 15px;
+    }
+
+    header .logo h1 {
+      font-size: 1.8em;
+      margin: 0;
+      color: #00d1ff;
+    }
+
+    header nav {
+      font-size: 1em;
+    }
+
+    header nav a {
+      margin-left: 20px;
+      color: #fff;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    header nav a:hover {
+      color: #0075ff;
+    }
+
+    /* Seção Hero */
+    .hero {
+      position: relative;
+      background: url('imagens/banner-hero.jpg') no-repeat center center/cover;
+      padding: 120px 20px;
+      text-align: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h2 {
+      font-size: 2.8em;
+      margin-bottom: 20px;
+      color: #00d1ff;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      background: #0075ff;
+      padding: 15px 30px;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+      margin: 5px;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #005bb5;
+    }
+
+    /* Seção Atendimento Inteligente */
+    .chat-section {
+      text-align: center;
+      padding: 40px;
+      background-color: #111;
+    }
+
+    .chat-section h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .chat-section p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .chat-section button {
+      background-color: #007BFF;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .chat-section .qr {
+      margin-top: 30px;
+    }
+
+    .chat-section .qr img {
+      width: 200px;
+    }
+
+    /* Seção de Recursos */
+    .features {
+      background: #141414;
+      padding: 60px 20px;
+      display: grid;
+      grid-gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .feature {
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+
+    .feature h3 {
+      margin-bottom: 15px;
+      color: #0075ff;
+      font-size: 1.5em;
+    }
+
+    .feature p {
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+
+    /* Seções de Vídeo */
+    .video-section {
+      background: #0d0d0d;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .video-section h2 {
+      font-size: 2.2em;
+      margin-bottom: 20px;
+      color: #00d1ff;
+    }
+
+    .video-section a img {
+      width: 100%;
+      max-width: 800px;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .video-section a img:hover {
+      transform: scale(1.02);
+    }
+
+    /* Seção de Depoimentos */
+    .testimonials {
+      background: #1a1a1a;
+      padding: 60px 20px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .testimonials h2 {
+      margin-bottom: 40px;
+      font-size: 2.2em;
+      color: #00d1ff;
+    }
+
+    .testimonial-container {
+      display: flex;
+      width: 300%;
+      animation: slide 15s infinite;
+    }
+
+    .testimonial {
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .testimonial p {
+      font-size: 1.2em;
+      font-style: italic;
+    }
+
+    .testimonial span {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #0075ff;
+    }
+
+    @keyframes slide {
+      0%   { transform: translateX(0%); }
+      33%  { transform: translateX(0%); }
+      38%  { transform: translateX(-100%); }
+      70%  { transform: translateX(-100%); }
+      75%  { transform: translateX(-200%); }
+      100% { transform: translateX(-200%); }
+    }
+
+    /* Seção de Contato */
+    .contact {
+      background: #0d0d0d;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .contact h2 {
+      margin-bottom: 20px;
+      color: #00d1ff;
+      font-size: 2.2em;
+    }
+
+    .contact p {
+      margin-bottom: 30px;
+      font-size: 1.1em;
+    }
+
+    .contact form {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .contact input, .contact textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+
+    .contact button {
+      background: #28a745;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 1em;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s;
+    }
+
+    .contact button:hover {
+      background: #218838;
+    }
+
+    .contact .whatsapp-btn {
+      background: #25D366;
+      margin-top: 10px;
+    }
+
+    .contact .whatsapp-btn:hover {
+      background: #1ebe5d;
+    }
+
+    /* Rodapé */
+    footer {
+      background: #1a1a1a;
+      padding: 20px 30px;
+      text-align: center;
+      font-size: 0.9em;
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+    footer .whatsapp-footer {
+      background: #25D366;
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    footer .whatsapp-footer:hover {
+      background: #1ebe5d;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <header>
+    <div class="logo">
+      <img src="imagens/logo.png" alt="Logo SegD’boa">
+      <h1>SegD’boa</h1>
+    </div>
+    <nav>
+      <a href="#hero">Início</a>
+      <a href="#features">Recursos</a>
+      <a href="#video">Vídeo</a>
+      <a href="#testimonials">Depoimentos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <!-- Nova Seção: Atendimento Inteligente -->
+  <section class="chat-section">
+    <h2>Atendimento Inteligente com a SegD’boa</h2>
+    <p>Fale agora com nosso assistente virtual e conheça nossas soluções em segurança inteligente.</p>
+    <a href="https://bots.easy-peasy.ai/bot/a51669b4-ed50-47d1-8675-d032f00fc050"  target="_blank" style="text-decoration: none;">
+      <button>💬 Acessar Assistente Virtual</button>
+    </a>
+    <div class="qr">
+      <p>Ou escaneie com seu celular:</p>
+      <img src="imagens/qr_chatbot_segdboa_com_logo.png" alt="QR Code SegDboa" />
+    </div>
+  </section>
+
+  <!-- Seção Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h2>Segurança Inteligente para Condomínios</h2>
+      <p>Transformamos câmeras comuns em sistemas inteligentes com monitoramento, reconhecimento facial, análise comportamental e integração direta com programas de segurança pública.</p>
+      <a class="btn" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3qIXPcL4ja9E0xM1ikf8lWP_n1wJmBEOwCPCDTQXmMjv5Qc3wDte7rcmk7ymTPm_bnyWNvTTn_?gv=true" target="_blank">Agende uma Demonstração</a>
+      <a class="btn" href="videos/VÍDEO SOFTWARE CONDOMÍNIOS.MP4" target="_blank">Assista ao Vídeo</a>
+    </div>
+  </section>
+
+  <!-- Seção de Recursos -->
+  <section class="features" id="features">
+    <div class="feature">
+      <h3>Monitoramento Inteligente</h3>
+      <p>Sistema avançado que detecta movimentos e envia alertas em tempo real.</p>
+      <a class="btn" href="videos/MONITORAMENTO INTELIGENTE.jpg" target="_blank">Saiba Mais</a>
+    </div>
+    <div class="feature">
+      <h3>Reconhecimento Facial</h3>
+      <p>Identificação automática para melhorar o controle de acesso e segurança.</p>
+      <a class="btn" href="videos/RECONHECIMENTO FACIAL.jpg" target="_blank">Saiba Mais</a>
+    </div>
+    <div class="feature">
+      <h3>Análise Comportamental e PLR</h3>
+      <p>Usamos análise comportamental e PLR para aumentar a segurança.</p>
+      <a class="btn" href="videos/ANALÍTICOS COMPORTAMENTAL.jpg" target="_blank">Saiba Mais</a>
+    </div>
+    <div class="feature">
+      <h3>Integração com Programas de Segurança Pública</h3>
+      <p>Conexão direta com órgãos de segurança para respostas rápidas e eficientes.</p>
+      <a class="btn" href="videos/INTEGRAÇÃO COM OS PROGRAMAS DE SEGURANÇA PÚBLICA.jpg" target="_blank">Saiba Mais</a>
+    </div>
+    <div class="feature">
+      <h3>Postes Street (inteligentes)</h3>
+      <p>Iluminação integrada com monitoramento para ambientes urbanos mais seguros.</p>
+      <a class="btn" href="videos/VÍDEO NOSSAS SOLUÇÕES.MP4" target="_blank">Saiba Mais</a>
+    </div>
+
+    <!-- Novos Itens -->
+    <div class="feature">
+      <h3>Solução Módulos</h3>
+      <p>Vídeos sobre os módulos inteligentes da SegD’boa.</p>
+      <a class="btn" href="videos/REELS DO MÓDULO INTELIGENTE.mp4" target="_blank">Assistir Vídeo</a>
+    </div>
+    <div class="feature">
+      <h3>Cartilha Muralha Paulista</h3>
+      <p>Conheça nossa integração com o Programa Muralha Paulista.</p>
+      <a class="btn" href="videos/VÍDEO CARTILHA PROJETO SEGD´BOA PROGRAMA MURALHA PAULISTA.mp4" target="_blank">Assistir Vídeo</a>
+    </div>
+    <div class="feature">
+      <h3>Análise Comportamental e PLR</h3>
+      <p>Veja como usamos análise comportamental e PLR para aumentar a segurança.</p>
+      <a class="btn" href="videos/ANALÍTICOS COMPORTAMENTAL.jpg" target="_blank">Ver Detalhes</a>
+    </div>
+  </section>
+
+  <!-- Seção de Vídeo: Solução para Condomínio Seguro -->
+  <section class="video-section" id="video">
+    <h2>Veja nossa Solução para um Condomínio Seguro</h2>
+    <a href="videos/VÍDEO SOFTWARE CONDOMÍNIOS.MP4" target="_blank">
+      <img src="imagens/video-thumbnail-condominio.jpg" alt="Vídeo Condomínio Seguro">
+    </a>
+  </section>
+
+  <!-- Seção de Vídeo: Postes Street Inteligentes -->
+  <section class="video-section" id="postes">
+    <h2>Postes Street Inteligentes</h2>
+    <a href="videos/VÍDEO NOSSAS SOLUÇÕES.MP4" target="_blank">
+      <img src="imagens/video-thumbnail-postes.jpg" alt="Vídeo Postes Street">
+    </a>
+  </section>
+
+  <!-- Seção de Depoimentos -->
+  <section class="testimonials" id="testimonials">
+    <h2>O que nossos clientes dizem</h2>
+    <div class="testimonial-container">
+      <div class="testimonial">
+        <p>"A tecnologia da SegD’boa revolucionou a segurança do nosso condomínio!"</p>
+        <span>- Cliente Satisfeito</span>
+      </div>
+      <div class="testimonial">
+        <p>"Monitoramento e reconhecimento facial que realmente fazem a diferença."</p>
+        <span>- Cliente Real</span>
+      </div>
+      <div class="testimonial">
+        <p>"A integração com os programas de segurança pública nos deu total tranquilidade."</p>
+        <span>- Usuário Feliz</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Contato -->
+  <section class="contact" id="contato">
+    <h2>Fale Conosco</h2>
+    <p>Entre em contato para solicitar uma demonstração, orçamento ou agendar visita.</p>
+    <form action="mailto:Flávio.costa@segdboa.com.br" method="post" enctype="text/plain">
+      <input type="text" name="nome" placeholder="Seu Nome" required>
+      <input type="email" name="email" placeholder="Seu E-mail" required>
+      <input type="tel" name="telefone" placeholder="Seu Telefone" required>
+      <textarea name="mensagem" rows="4" placeholder="Como podemos ajudar?"></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+    <a class="btn whatsapp-btn" href="https://wa.me/5519997767688" target="_blank">Fale comigo pelo WhatsApp</a>
+    <br>
+    <a class="btn" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3qIXPcL4ja9E0xM1ikf8lWP_n1wJmBEOwCPCDTQXmMjv5Qc3wDte7rcmk7ymTPm_bnyWNvTTn_?gv=true" target="_blank">Agende uma Visita</a>
+  </section>
+
+  <!-- Chatbot -->
+  <div id="chatbot">
+    <iframe src="https://bots.easy-peasy.ai/bot/a51669b4-ed50-47d1-8675-d032f00fc050?_gl=1*zchzay*_gcl_au*MTQxMDM2MjIzNS4xNzMxMDAzMzY3" width="350" height="500" frameborder="0"></iframe>
+  </div>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 SegD’boa. Todos os direitos reservados.</p>
+    <p>Rua Aureliano Guimarães, 172, conj. 311, São Paulo - SP</p>
+    <p>Email: Flávio.costa@segdboa.com.br</p>
+    <a class="whatsapp-footer" href="https://wa.me/5519997767688" target="_blank">Contato WhatsApp: 19-9 9776-7688</a>
+  </footer>
+
+</body>
+</html>
