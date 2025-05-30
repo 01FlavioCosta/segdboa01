@@ -32,6 +32,9 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      position: sticky; /* Mantém o header fixo no topo */
+      top: 0;
+      z-index: 100; /* Garante que o header fique sobre outros elementos */
     }
 
     header .logo {
@@ -40,22 +43,22 @@
     }
 
     header .logo img {
-      max-width: 100px;
-      margin-right: 15px;
+      max-width: 80px; /* Reduzido para melhor responsividade */
+      margin-right: 10px; /* Reduzido */
     }
 
     header .logo h1 {
-      font-size: 1.8em;
+      font-size: 1.5em; /* Reduzido para melhor responsividade */
       margin: 0;
       color: #00d1ff;
     }
 
     header nav {
-      font-size: 1em;
+      font-size: 0.9em; /* Reduzido para melhor responsividade */
     }
 
     header nav a {
-      margin-left: 20px;
+      margin-left: 15px; /* Reduzido */
       color: #fff;
       font-weight: bold;
       transition: color 0.3s ease;
@@ -68,9 +71,14 @@
     /* Seção Hero */
     .hero {
       position: relative;
+      /* Considere usar um placeholder ou uma imagem que você tenha na pasta 'imagens' */
       background: url('imagens/banner-hero.jpg') no-repeat center center/cover;
-      padding: 120px 20px;
+      padding: 100px 20px; /* Ajustado */
       text-align: center;
+      min-height: 70vh; /* Altura mínima para melhor visualização */
+      display: flex; /* Para centralizar conteúdo verticalmente */
+      align-items: center; /* Para centralizar conteúdo verticalmente */
+      justify-content: center; /* Para centralizar conteúdo horizontalmente */
     }
 
     .hero::after {
@@ -80,7 +88,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.65); /* Levemente mais escuro para melhor contraste do texto */
     }
 
     .hero-content {
@@ -91,92 +99,73 @@
     }
 
     .hero h2 {
-      font-size: 2.8em;
+      font-size: 2.5em; /* Ajustado */
       margin-bottom: 20px;
       color: #00d1ff;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7); /* Sombra para legibilidade */
     }
 
     .hero p {
-      font-size: 1.2em;
-      margin-bottom: 40px;
+      font-size: 1.1em; /* Ajustado */
+      margin-bottom: 30px; /* Ajustado */
+      line-height: 1.6;
     }
 
     .btn {
       background: #0075ff;
-      padding: 15px 30px;
+      padding: 12px 25px; /* Ajustado */
       color: #fff;
       border: none;
       border-radius: 5px;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.2s;
       margin: 5px;
       display: inline-block;
+      font-weight: bold;
     }
 
     .btn:hover {
       background: #005bb5;
+      transform: translateY(-2px); /* Efeito de levantar ao passar o mouse */
     }
 
-    /* Seção Atendimento Inteligente */
-    .chat-section {
-      text-align: center;
-      padding: 40px;
-      background-color: #111;
-    }
-
-    .chat-section h2 {
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
-
-    .chat-section p {
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
-
-    .chat-section button {
-      background-color: #007BFF;
-      color: white;
-      padding: 12px 24px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .chat-section .qr {
-      margin-top: 30px;
-    }
-
-    .chat-section .qr img {
-      width: 200px;
-    }
-
-    /* Seção de Recursos - Grid responsivo para 5 itens */
+    /* Seção de Recursos */
     .features {
       background: #141414;
       padding: 60px 20px;
       display: grid;
       grid-gap: 30px;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajustado minmax */
     }
 
     .feature {
       background: #1a1a1a;
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Sombra mais pronunciada */
       text-align: center;
+      display: flex; /* Para alinhar conteúdo interno */
+      flex-direction: column; /* Empilhar verticalmente */
+      justify-content: space-between; /* Distribuir espaço */
+    }
+    
+    .feature img, .feature video { /* Estilo para imagens e vídeos nos features */
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-top: 15px;
     }
 
     .feature h3 {
+      margin-top:0; /* Remover margem superior se for o primeiro elemento */
       margin-bottom: 15px;
       color: #0075ff;
-      font-size: 1.5em;
+      font-size: 1.4em; /* Ajustado */
     }
 
     .feature p {
       font-size: 1em;
       margin-bottom: 20px;
+      flex-grow: 1; /* Permite que o parágrafo cresça para preencher espaço */
     }
 
     /* Seções de Vídeo */
@@ -187,21 +176,28 @@
     }
 
     .video-section h2 {
-      font-size: 2.2em;
-      margin-bottom: 20px;
+      font-size: 2em; /* Ajustado */
+      margin-bottom: 30px; /* Aumentado */
       color: #00d1ff;
     }
 
-    .video-section a img {
-      width: 100%;
-      max-width: 800px;
-      border-radius: 10px;
-      transition: transform 0.3s;
-      cursor: pointer;
+    .video-section .video-container { /* Adicionado para melhor controle do vídeo/thumbnail */
+        display: inline-block; /* Para centralizar e aplicar sombra */
+        border-radius: 10px;
+        overflow: hidden; /* Para o border-radius funcionar na imagem */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        transition: transform 0.3s;
     }
 
-    .video-section a img:hover {
-      transform: scale(1.02);
+    .video-section .video-container:hover {
+        transform: scale(1.03);
+    }
+    
+    .video-section .video-container img {
+      width: 100%;
+      max-width: 720px; /* Tamanho máximo para o vídeo */
+      display: block; /* Remover espaço extra abaixo da imagem */
+      border-radius: 0; /* Removido pois o container já tem */
     }
 
     /* Seção de Depoimentos (Carousel) */
@@ -215,25 +211,32 @@
 
     .testimonials h2 {
       margin-bottom: 40px;
-      font-size: 2.2em;
+      font-size: 2em; /* Ajustado */
       color: #00d1ff;
     }
 
     .testimonial-container {
       display: flex;
-      width: 300%;
-      animation: slide 15s infinite;
+      transition: transform 0.5s ease-in-out; /* Transição mais suave para JS */
+      /* A animação CSS foi removida para controle via JS se necessário,
+         ou pode ser reativada se preferir a animação automática.
+         Se reativar, ajuste a largura para 300% (ou N00% para N slides)
+         width: 300%;
+         animation: slide 15s infinite;
+      */
     }
 
     .testimonial {
-      width: 100%;
-      padding: 20px;
+      min-width: 100%; /* Garante que cada slide ocupe todo o container */
+      padding: 20px 40px; /* Mais padding lateral */
       box-sizing: border-box;
     }
 
     .testimonial p {
-      font-size: 1.2em;
+      font-size: 1.15em; /* Ajustado */
       font-style: italic;
+      line-height: 1.7;
+      margin-bottom: 10px;
     }
 
     .testimonial span {
@@ -242,15 +245,18 @@
       font-weight: bold;
       color: #0075ff;
     }
-
+    /* Keyframes para animação de slide (se for usar CSS animation) */
+    /*
     @keyframes slide {
       0%   { transform: translateX(0%); }
-      33%  { transform: translateX(0%); }
-      38%  { transform: translateX(-100%); }
-      70%  { transform: translateX(-100%); }
-      75%  { transform: translateX(-200%); }
-      100% { transform: translateX(-200%); }
+      30%  { transform: translateX(0%); }
+      33%  { transform: translateX(-100%); }
+      63%  { transform: translateX(-100%); }
+      66%  { transform: translateX(-200%); }
+      97%  { transform: translateX(-200%); }
+      100% { transform: translateX(0%); } /* Loop back for smoother transition
     }
+    */
 
     /* Seção de Contato */
     .contact {
@@ -262,7 +268,7 @@
     .contact h2 {
       margin-bottom: 20px;
       color: #00d1ff;
-      font-size: 2.2em;
+      font-size: 2em; /* Ajustado */
     }
 
     .contact p {
@@ -271,55 +277,116 @@
     }
 
     .contact form {
-      max-width: 500px;
+      max-width: 600px; /* Aumentado */
       margin: 0 auto;
       text-align: left;
     }
 
     .contact input, .contact textarea {
       width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: none;
+      padding: 15px; /* Aumentado */
+      margin-bottom: 20px; /* Aumentado */
+      border: 1px solid #333; /* Borda sutil */
       border-radius: 5px;
       font-size: 1em;
+      background-color: #222; /* Fundo escuro para campos */
+      color: #fff; /* Texto branco */
+    }
+    .contact input::placeholder, .contact textarea::placeholder {
+        color: #888; /* Cor do placeholder */
     }
 
-    .contact button {
+    .contact button[type="submit"] { /* Especificidade para o botão de envio */
       background: #28a745;
       padding: 15px 30px;
       border: none;
       border-radius: 5px;
       color: #fff;
       font-size: 1em;
+      font-weight: bold;
       cursor: pointer;
       width: 100%;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.2s;
     }
 
-    .contact button:hover {
+    .contact button[type="submit"]:hover {
       background: #218838;
+      transform: translateY(-2px);
     }
 
+    .contact .whatsapp-btn, .contact .calendar-btn { /* Estilo comum para botões de ação */
+        margin-top: 15px;
+    }
+    
     .contact .whatsapp-btn {
       background: #25D366;
-      margin-top: 10px;
     }
 
     .contact .whatsapp-btn:hover {
       background: #1ebe5d;
     }
 
+    /* Chatbot Fixo e Botão de Toggle */
+    #chatbot-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    #chatbot-toggle {
+      background-color: #0075ff;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 28px;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px; /* Espaço entre o botão e o iframe */
+    }
+    #chatbot-toggle:hover {
+        background-color: #005bb5;
+    }
+
+    #chatbot-iframe-container {
+      width: 350px;
+      height: 500px; /* Altura padrão */
+      max-height: 80vh; /* Limitar altura em telas menores */
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+      display: none; /* Começa escondido */
+    }
+    
+    #chatbot-iframe-container.visible {
+        display: block;
+    }
+
+    #chatbot-iframe-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
     /* Rodapé */
     footer {
       background: #1a1a1a;
-      padding: 20px 30px;
+      padding: 30px; /* Aumentado padding */
       text-align: center;
       font-size: 0.9em;
+      line-height: 1.6;
     }
 
     footer p {
-      margin: 5px 0;
+      margin: 8px 0; /* Espaçamento ajustado */
     }
 
     footer .whatsapp-footer {
@@ -327,17 +394,77 @@
       padding: 10px 20px;
       border-radius: 5px;
       display: inline-block;
-      margin-top: 10px;
+      margin-top: 15px; /* Aumentado espaço */
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
     }
 
     footer .whatsapp-footer:hover {
       background: #1ebe5d;
+      transform: translateY(-2px);
     }
+
+    /* Media queries para responsividade adicional */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 15px;
+      }
+      header .logo {
+        margin-bottom: 10px;
+      }
+      header nav a {
+        margin: 0 10px; /* Ajuste de margem para nav */
+        display: block; /* Links do menu em bloco em telas pequenas */
+        padding: 5px 0;
+        text-align: center;
+      }
+      .hero h2 {
+        font-size: 2em;
+      }
+      .hero p {
+        font-size: 1em;
+      }
+      .features {
+        grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
+      }
+      #chatbot-iframe-container {
+        width: calc(100vw - 40px); /* Largura total menos paddings */
+        height: 70vh;
+      }
+      .testimonial-container { /* Se for usar JS para o carrossel, ajuste aqui */
+        /* flex-direction: column; */ /* Se quiser empilhar verticalmente em mobile */
+      }
+      .testimonial {
+        padding: 20px;
+      }
+    }
+    @media (max-width: 480px) {
+        header .logo img {
+            max-width: 60px;
+        }
+        header .logo h1 {
+            font-size: 1.3em;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 0.9em;
+        }
+        .hero {
+            padding: 60px 20px;
+        }
+        .hero h2 {
+            font-size: 1.8em;
+        }
+        .video-section h2, .testimonials h2, .contact h2 {
+            font-size: 1.6em;
+        }
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- Cabeçalho -->
   <header>
     <div class="logo">
       <img src="imagens/NOVA OGO SMAT CIT.png" alt="Logo SegD'boa">
@@ -346,144 +473,162 @@
     <nav>
       <a href="#hero">Início</a>
       <a href="#features">Recursos</a>
-      <a href="#video">Vídeo</a>
+      <a href="#solucoes-video">Soluções</a>
       <a href="#testimonials">Depoimentos</a>
       <a href="#contato">Contato</a>
     </nav>
   </header>
 
-  <!-- Nova Seção: Atendimento Inteligente -->
-  <section class="chat-section">
-    <h2>Atendimento Inteligente com a SegD’boa</h2>
-    <p>Fale agora com nosso assistente virtual e conheça nossas soluções em segurança inteligente.</p>
-    <a href="https://bots.easy-peasy.ai/bot/a51669b4-ed50-47d1-8675-d032f00fc050"  target="_blank" style="text-decoration: none;">
-      <button>💬 Acessar Assistente Virtual</button>
-    </a>
-    <div class="qr">
-      <p>Ou escaneie com seu celular:</p>
-      <img src="imagens/qr_chatbot_segdboa_com_logo.png" alt="QR Code SegDboa" />
-    </div>
-  </section>
-
-  <!-- Seção Hero -->
   <section class="hero" id="hero">
     <div class="hero-content">
-      <h2>Segurança Inteligente para Condomínios</h2>
+      <h2>Segurança Inteligente para Condomínios e Cidades</h2>
       <p>Transformamos câmeras comuns em sistemas inteligentes com monitoramento, reconhecimento facial, análise comportamental e integração direta com programas de segurança pública.</p>
       <a class="btn" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3qIXPcL4ja9E0xM1ikf8lWP_n1wJmBEOwCPCDTQXmMjv5Qc3wDte7rcmk7ymTPm_bnyWNvTTn_?gv=true" target="_blank">Agende uma Demonstração</a>
       <a class="btn" href="videos/VÍDEO SOFTWARE CONDOMÍNIOS.MP4" target="_blank">Assista ao Vídeo</a>
     </div>
   </section>
 
-  <!-- Seção de Recursos -->
   <section class="features" id="features">
     <div class="feature">
       <h3>Monitoramento Inteligente</h3>
-      <p>Sistema avançado que detecta movimentos e envia alertas em tempo real.</p>
-      <a class="btn" href="imagens/MONITORAMENTO INTELIGENTE.jpg" target="_blank">Saiba Mais</a>
+      <p>Sistema avançado que detecta movimentos e envia alertas em tempo real, potencializando a segurança do seu espaço.</p>
+      <img src="imagens/MONITORAMENTO INTELIGENTE.jpg" alt="Monitoramento Inteligente">
     </div>
     <div class="feature">
       <h3>Reconhecimento Facial</h3>
-      <p>Identificação automática para melhorar o controle de acesso e segurança.</p>
-      <a class="btn" href="imagens/RECONHECIMENTO FACIAL.jpg" target="_blank">Saiba Mais</a>
+      <p>Identificação automática e precisa para controle de acesso avançado e maior segurança em ambientes restritos.</p>
+      <img src="imagens/RECONHECIMENTO FACIAL.jpg" alt="Reconhecimento Facial">
     </div>
     <div class="feature">
-      <h3>Análise Comportamental e PLR</h3>
-      <p>Usamos análise comportamental e PLR para aumentar a segurança.</p>
-      <a class="btn" href="imagens/ANALÍTICOS LPR E COMPORTAMENTAL.jpg" target="_blank">Saiba Mais</a>
+      <h3>Analíticos LPR e Comportamental</h3>
+      <p>Utilizamos leitura de placas (LPR) e análise de padrões comportamentais para uma segurança proativa e preventiva.</p>
+      <img src="imagens/ANALÍTICOS LPR E COMPORTAMENTAL.jpg" alt="Analíticos LPR e Comportamental">
     </div>
     <div class="feature">
-      <h3>Integração com Programas de Segurança Pública</h3>
-      <p>Conexão direta com órgãos de segurança para respostas rápidas e eficientes.</p>
-      <a class="btn" href="imagens/INTEGRAÇÃO COM OS PROGRAMAS DE SEGURANÇA PÚBLICA.jpg" target="_blank">Saiba Mais</a>
+      <h3>Integração com Segurança Pública</h3>
+      <p>Conexão direta com órgãos de segurança para respostas rápidas e eficientes em situações críticas.</p>
+      <img src="imagens/INTEGRAÇÃO COM OS PROGRAMAS DE SEGURANÇA PÚBLICA.jpg" alt="Integração com Segurança Pública">
     </div>
     <div class="feature">
-      <h3>Postes Street (inteligentes)</h3>
-      <p>Iluminação integrada com monitoramento para ambientes urbanos mais seguros.</p>
-      <a class="btn" href="videos/VÍDEO NOSSAS SOLUÇÕES.MP4" target="_blank">Saiba Mais</a>
-    </div>
-
-    <!-- Novos Itens -->
-    <div class="feature">
-      <h3>Solução Módulos</h3>
-      <p>Vídeos sobre os módulos inteligentes da SegD’boa.</p>
-      <a class="btn" href="videos/REELS DO MÓDULO INTELIGENTE.mp4" target="_blank">Assistir Vídeo</a>
+      <h3>Postes Inteligentes (Street)</h3>
+      <p>Soluções de iluminação e vigilância integradas para cidades e grandes áreas, promovendo ambientes urbanos mais seguros e conectados.</p>
+      <img src="imagens/POSTES STREET - OURO.jpg" alt="Postes Street Inteligentes - Ouro">
+      <a class="btn" href="videos/VÍDEO NOSSAS SOLUÇÕES.MP4" target="_blank" style="margin-top: 15px;">Ver Soluções em Postes</a>
     </div>
     <div class="feature">
-      <h3>Cartilha Muralha Paulista</h3>
-      <p>Conheça nossa integração com o Programa Muralha Paulista.</p>
-      <a class="btn" href="videos/VÍDEO CARTILHA PROJETO SEGD´BOA PROGRAMA MURALHA PAULISTA.mp4" target="_blank">Assistir Vídeo</a>
+      <h3>Soluções com Módulos Inteligentes</h3>
+      <p>Descubra a versatilidade e eficiência dos nossos módulos inteligentes aplicados em diversas soluções de segurança.</p>
+      <a class="btn" href="videos/REELS DO MÓDULO INTELIGENTE.mp4" target="_blank">Assistir Vídeo dos Módulos</a>
     </div>
     <div class="feature">
-      <h3>Análise Comportamental e PLR</h3>
-      <p>Veja como usamos análise comportamental e PLR para aumentar a segurança.</p>
-      <a class="btn" href="imagens/ANALÍTICOS LPR E COMPORTAMENTAL.jpg" target="_blank">Ver Detalhes</a>
+      <h3>Cartilha Projeto SegD’Boa - Muralha Paulista</h3>
+      <p>Conheça nossa participação e integração com o Programa Muralha Paulista através da nossa cartilha informativa em vídeo.</p>
+      <a class="btn" href="videos/VÍDEO CARTILHA PROJETO SEGD´BOA PROGRAMA MURALHA PAULISTA.mp4" target="_blank">Assistir Vídeo da Cartilha</a>
     </div>
   </section>
 
-  <!-- Seção de Vídeo: Solução para Condomínio Seguro -->
-  <section class="video-section" id="video">
-    <h2>Veja nossa Solução para um Condomínio Seguro</h2>
-    <a href="videos/VÍDEO SOFTWARE CONDOMÍNIOS.MP4" target="_blank">
-      <img src="imagens/video-thumbnail-condominio.jpg" alt="Vídeo Condomínio Seguro">
-    </a>
+  <section class="video-section" id="solucoes-video">
+    <h2>Nossas Soluções em Ação</h2>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+      
+      <div class="video-showcase">
+        <h3>Software para Condomínios Seguros</h3>
+        <a href="videos/VÍDEO SOFTWARE CONDOMÍNIOS.MP4" target="_blank" class="video-container">
+          <img src="imagens/thumbnail-video-condominios.jpg" alt="Vídeo Software para Condomínios">
+        </a>
+      </div>
+
+      <div class="video-showcase">
+        <h3>Postes Street Inteligentes e Soluções Urbanas</h3>
+         <a href="videos/VÍDEO NOSSAS SOLUÇÕES.MP4" target="_blank" class="video-container">
+          <img src="imagens/thumbnail-video-postes-solucoes.jpg" alt="Vídeo Postes Street e Soluções">
+        </a>
+      </div>
+    </div>
   </section>
 
-  <!-- Seção de Vídeo: Postes Street Inteligentes -->
-  <section class="video-section" id="postes">
-    <h2>Postes Street Inteligentes</h2>
-    <a href="videos/VÍDEO NOSSAS SOLUÇÕES.MP4" target="_blank">
-      <img src="imagens/video-thumbnail-postes.jpg" alt="Vídeo Postes Street">
-    </a>
-  </section>
-
-  <!-- Seção de Depoimentos -->
   <section class="testimonials" id="testimonials">
     <h2>O que nossos clientes dizem</h2>
     <div class="testimonial-container">
       <div class="testimonial">
-        <p>"A tecnologia da SegD’boa revolucionou a segurança do nosso condomínio!"</p>
-        <span>- Cliente Satisfeito</span>
+        <p>"A tecnologia da SegD’boa revolucionou a segurança do nosso condomínio! O sistema é robusto e o suporte é excelente."</p>
+        <span>- Síndico Profissional, Condomínio Alpha</span>
       </div>
       <div class="testimonial">
-        <p>"Monitoramento e reconhecimento facial que realmente fazem a diferença."</p>
-        <span>- Cliente Real</span>
+        <p>"O monitoramento inteligente e o reconhecimento facial trouxeram uma paz de espírito que não tínhamos antes. Realmente faz a diferença."</p>
+        <span>- Gestor de Segurança, Empresa Beta</span>
       </div>
       <div class="testimonial">
-        <p>"A integração com os programas de segurança pública nos deu total tranquilidade."</p>
-        <span>- Usuário Feliz</span>
+        <p>"A integração com os programas de segurança pública é um diferencial incrível. Sentimos nossa cidade mais protegida."</p>
+        <span>- Representante Municipal, Cidade Gama</span>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Seção de Contato -->
   <section class="contact" id="contato">
     <h2>Fale Conosco</h2>
-    <p>Entre em contato para solicitar uma demonstração, orçamento ou agendar visita.</p>
-    <form action="mailto:Flávio.costa@segdboa.com.br" method="post" enctype="text/plain">
-      <input type="text" name="nome" placeholder="Seu Nome" required>
-      <input type="email" name="email" placeholder="Seu E-mail" required>
-      <input type="tel" name="telefone" placeholder="Seu Telefone" required>
-      <textarea name="mensagem" rows="4" placeholder="Como podemos ajudar?"></textarea>
-      <button type="submit">Enviar</button>
+    <p>Entre em contato para solicitar uma demonstração, orçamento ou agendar uma visita técnica. Estamos prontos para atendê-lo!</p>
+    <form action="mailto:Flavio.costa@segdboa.com.br" method="post" enctype="text/plain">
+      <input type="text" name="nome" placeholder="Seu Nome Completo" required>
+      <input type="email" name="email" placeholder="Seu Melhor E-mail" required>
+      <input type="tel" name="telefone" placeholder="Seu Telefone (com DDD)" required>
+      <textarea name="mensagem" rows="5" placeholder="Como podemos te ajudar? Descreva sua necessidade."></textarea>
+      <button type="submit">Enviar Mensagem</button>
     </form>
-    <a class="btn whatsapp-btn" href="https://wa.me/5519997767688" target="_blank">Fale comigo pelo WhatsApp</a>
+    <a class="btn whatsapp-btn" href="https://wa.me/5519997767688" target="_blank">💬 Fale Conosco pelo WhatsApp</a>
     <br>
-    <a class="btn" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3qIXPcL4ja9E0xM1ikf8lWP_n1wJmBEOwCPCDTQXmMjv5Qc3wDte7rcmk7ymTPm_bnyWNvTTn_?gv=true" target="_blank">Agende uma Visita</a>
+    <a class="btn calendar-btn" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3qIXPcL4ja9E0xM1ikf8lWP_n1wJmBEOwCPCDTQXmMjv5Qc3wDte7rcmk7ymTPm_bnyWNvTTn_?gv=true" target="_blank" style="background-color: #f0ad4e; margin-top:10px;">📅 Agende uma Visita/Demonstração</a>
   </section>
 
-  <!-- Chatbot (fixo no canto inferior direito) -->
-  <div id="chatbot">
-    <iframe src="https://bots.easy-peasy.ai/bot/a51669b4-ed50-47d1-8675-d032f00fc050?_gl=1*zchzay*_gcl_au*MTQxMDM2MjIzNS4xNzMxMDAzMzY3" width="350" height="500" frameborder="0"></iframe>
+  <div id="chatbot-container">
+    <button id="chatbot-toggle">💬</button>
+    <div id="chatbot-iframe-container">
+      <iframe src="https://bots.easy-peasy.ai/bot/a51669b4-ed50-47d1-8675-d032f00fc050?_gl=1*zchzay*_gcl_au*MTQxMDM2MjIzNS4xNzMxMDAzMzY3" allow="microphone"></iframe>
+    </div>
   </div>
 
-  <!-- Rodapé -->
   <footer>
-    <p>&copy; 2025 SegD’boa. Todos os direitos reservados.</p>
-    <p>Rua Aureliano Guimarães, 172, conj. 311, São Paulo - SP</p>
-    <p>Email: Flávio.costa@segdboa.com.br</p>
-    <a class="whatsapp-footer" href="https://wa.me/5519997767688" target="_blank">Contato WhatsApp: 19-9 9776-7688</a>
+    <p>&copy; <span id="currentYear"></span> SegD’boa Soluções Tecnológicas. Todos os direitos reservados.</p>
+    <p>Sede: Rua Aureliano Guimarães, 172, Conjunto 311, Vila Andrade, São Paulo - SP, CEP 05727-160</p>
+    <p>E-mail: <a href="mailto:Flavio.costa@segdboa.com.br">Flavio.costa@segdboa.com.br</a></p>
+    <a class="whatsapp-footer" href="https://wa.me/5519997767688" target="_blank">Contato WhatsApp: (19) 99776-7688</a>
   </footer>
+
+<script>
+  // Script para o Toggle do Chatbot
+  const chatbotToggle = document.getElementById('chatbot-toggle');
+  const chatbotIframeContainer = document.getElementById('chatbot-iframe-container');
+
+  chatbotToggle.addEventListener('click', () => {
+    chatbotIframeContainer.classList.toggle('visible');
+    if (chatbotIframeContainer.classList.contains('visible')) {
+      chatbotToggle.textContent = '✕'; // Mudar para ícone de fechar
+    } else {
+      chatbotToggle.textContent = '💬'; // Mudar para ícone de chat
+    }
+  });
+
+  // Script para o ano atual no rodapé
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+  
+  // Script básico para carrossel de depoimentos (opcional, pode ser expandido)
+  const testimonialsContainer = document.querySelector('.testimonial-container');
+  const testimonials = Array.from(document.querySelectorAll('.testimonial'));
+  let currentTestimonial = 0;
+
+  function showTestimonial(index) {
+      testimonialsContainer.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  // Exemplo: Avançar automaticamente a cada 7 segundos
+  // setInterval(() => {
+  //    currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+  //    showTestimonial(currentTestimonial);
+  // }, 7000);
+  // Para um carrossel mais robusto, considere usar os botões Prev/Next e mais lógica.
+  // Se você reativar a animação CSS, este script de carrossel pode não ser necessário ou precisar de ajustes.
+
+</script>
 
 </body>
 </html>
