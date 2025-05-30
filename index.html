@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <title>SegD’boa - Segurança Inteligente para Condomínios</title>
+  <title>SegD’boa - Segurança Inteligente para Condomínios e Cidades</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     /* Reset e configurações básicas */
@@ -32,9 +32,9 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      position: sticky; /* Mantém o header fixo no topo */
+      position: sticky; 
       top: 0;
-      z-index: 100; /* Garante que o header fique sobre outros elementos */
+      z-index: 100; 
     }
 
     header .logo {
@@ -43,22 +43,22 @@
     }
 
     header .logo img {
-      max-width: 80px; /* Reduzido para melhor responsividade */
-      margin-right: 10px; /* Reduzido */
+      max-width: 80px; 
+      margin-right: 10px;
     }
 
     header .logo h1 {
-      font-size: 1.5em; /* Reduzido para melhor responsividade */
+      font-size: 1.5em; 
       margin: 0;
       color: #00d1ff;
     }
 
     header nav {
-      font-size: 0.9em; /* Reduzido para melhor responsividade */
+      font-size: 0.9em; 
     }
 
     header nav a {
-      margin-left: 15px; /* Reduzido */
+      margin-left: 15px; 
       color: #fff;
       font-weight: bold;
       transition: color 0.3s ease;
@@ -71,14 +71,13 @@
     /* Seção Hero */
     .hero {
       position: relative;
-      /* Considere usar um placeholder ou uma imagem que você tenha na pasta 'imagens' */
-      background: url('imagens/banner-hero.jpg') no-repeat center center/cover;
-      padding: 100px 20px; /* Ajustado */
+      background: url('imagens/banner-hero.jpg') no-repeat center center/cover; /* Certifique-se que esta imagem exista */
+      padding: 100px 20px; 
       text-align: center;
-      min-height: 70vh; /* Altura mínima para melhor visualização */
-      display: flex; /* Para centralizar conteúdo verticalmente */
-      align-items: center; /* Para centralizar conteúdo verticalmente */
-      justify-content: center; /* Para centralizar conteúdo horizontalmente */
+      min-height: 70vh; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
     }
 
     .hero::after {
@@ -88,7 +87,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.65); /* Levemente mais escuro para melhor contraste do texto */
+      background: rgba(0, 0, 0, 0.65); 
     }
 
     .hero-content {
@@ -99,21 +98,21 @@
     }
 
     .hero h2 {
-      font-size: 2.5em; /* Ajustado */
+      font-size: 2.5em; 
       margin-bottom: 20px;
       color: #00d1ff;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.7); /* Sombra para legibilidade */
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7); 
     }
 
     .hero p {
-      font-size: 1.1em; /* Ajustado */
-      margin-bottom: 30px; /* Ajustado */
+      font-size: 1.1em; 
+      margin-bottom: 30px; 
       line-height: 1.6;
     }
 
     .btn {
       background: #0075ff;
-      padding: 12px 25px; /* Ajustado */
+      padding: 12px 25px; 
       color: #fff;
       border: none;
       border-radius: 5px;
@@ -125,7 +124,7 @@
 
     .btn:hover {
       background: #005bb5;
-      transform: translateY(-2px); /* Efeito de levantar ao passar o mouse */
+      transform: translateY(-2px); 
     }
 
     /* Seção de Recursos */
@@ -134,21 +133,21 @@
       padding: 60px 20px;
       display: grid;
       grid-gap: 30px;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajustado minmax */
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     }
 
     .feature {
       background: #1a1a1a;
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Sombra mais pronunciada */
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
       text-align: center;
-      display: flex; /* Para alinhar conteúdo interno */
-      flex-direction: column; /* Empilhar verticalmente */
-      justify-content: space-between; /* Distribuir espaço */
+      display: flex; 
+      flex-direction: column; 
+      justify-content: space-between; 
     }
     
-    .feature img, .feature video { /* Estilo para imagens e vídeos nos features */
+    .feature img, .feature video { 
         max-width: 100%;
         height: auto;
         border-radius: 5px;
@@ -156,49 +155,78 @@
     }
 
     .feature h3 {
-      margin-top:0; /* Remover margem superior se for o primeiro elemento */
+      margin-top:0; 
       margin-bottom: 15px;
       color: #0075ff;
-      font-size: 1.4em; /* Ajustado */
+      font-size: 1.4em; 
     }
 
     .feature p {
       font-size: 1em;
       margin-bottom: 20px;
-      flex-grow: 1; /* Permite que o parágrafo cresça para preencher espaço */
+      flex-grow: 1; 
     }
-
-    /* Seções de Vídeo */
-    .video-section {
-      background: #0d0d0d;
+    
+    /* Seção Nossas Soluções Detalhadas */
+    .detailed-solutions {
+      background: #101010; /* Um pouco diferente para destaque */
       padding: 60px 20px;
-      text-align: center;
     }
 
-    .video-section h2 {
-      font-size: 2em; /* Ajustado */
-      margin-bottom: 30px; /* Aumentado */
+    .detailed-solutions h2 {
+      text-align: center;
+      font-size: 2.2em;
+      margin-bottom: 50px;
       color: #00d1ff;
     }
 
-    .video-section .video-container { /* Adicionado para melhor controle do vídeo/thumbnail */
-        display: inline-block; /* Para centralizar e aplicar sombra */
-        border-radius: 10px;
-        overflow: hidden; /* Para o border-radius funcionar na imagem */
-        box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-        transition: transform 0.3s;
+    .solutions-container {
+      display: flex;
+      flex-direction: column; /* Empilha por padrão */
+      gap: 30px;
     }
 
-    .video-section .video-container:hover {
-        transform: scale(1.03);
+    .solution-description {
+      background: #1c1c1c; /* Cor de card */
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+      border-left: 5px solid #0075ff; /* Detalhe de cor */
+    }
+
+    .solution-description h3 {
+      color: #00aaff; /* Um azul um pouco mais vibrante */
+      font-size: 1.8em;
+      margin-top: 0;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
     }
     
-    .video-section .video-container img {
-      width: 100%;
-      max-width: 720px; /* Tamanho máximo para o vídeo */
-      display: block; /* Remover espaço extra abaixo da imagem */
-      border-radius: 0; /* Removido pois o container já tem */
+    .solution-description h3 .emoji {
+        font-size: 1.5em; /* Tamanho do emoji */
+        margin-right: 10px;
     }
+
+    .solution-description p {
+      font-size: 1.1em;
+      line-height: 1.7;
+      color: #f0f0f0; /* Cor de texto clara e legível */
+      margin-bottom: 10px;
+    }
+     .solution-description p:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (min-width: 992px) { /* Para telas maiores, colocar lado a lado */
+      .solutions-container {
+        flex-direction: row; /* Lado a lado em telas maiores */
+      }
+      .solution-description {
+        flex: 1; /* Distribui o espaço igualmente */
+      }
+    }
+
 
     /* Seção de Depoimentos (Carousel) */
     .testimonials {
@@ -211,29 +239,23 @@
 
     .testimonials h2 {
       margin-bottom: 40px;
-      font-size: 2em; /* Ajustado */
+      font-size: 2em; 
       color: #00d1ff;
     }
 
     .testimonial-container {
       display: flex;
-      transition: transform 0.5s ease-in-out; /* Transição mais suave para JS */
-      /* A animação CSS foi removida para controle via JS se necessário,
-         ou pode ser reativada se preferir a animação automática.
-         Se reativar, ajuste a largura para 300% (ou N00% para N slides)
-         width: 300%;
-         animation: slide 15s infinite;
-      */
+      transition: transform 0.5s ease-in-out; 
     }
 
     .testimonial {
-      min-width: 100%; /* Garante que cada slide ocupe todo o container */
-      padding: 20px 40px; /* Mais padding lateral */
+      min-width: 100%; 
+      padding: 20px 40px; 
       box-sizing: border-box;
     }
 
     .testimonial p {
-      font-size: 1.15em; /* Ajustado */
+      font-size: 1.15em; 
       font-style: italic;
       line-height: 1.7;
       margin-bottom: 10px;
@@ -245,18 +267,6 @@
       font-weight: bold;
       color: #0075ff;
     }
-    /* Keyframes para animação de slide (se for usar CSS animation) */
-    /*
-    @keyframes slide {
-      0%   { transform: translateX(0%); }
-      30%  { transform: translateX(0%); }
-      33%  { transform: translateX(-100%); }
-      63%  { transform: translateX(-100%); }
-      66%  { transform: translateX(-200%); }
-      97%  { transform: translateX(-200%); }
-      100% { transform: translateX(0%); } /* Loop back for smoother transition
-    }
-    */
 
     /* Seção de Contato */
     .contact {
@@ -268,7 +278,7 @@
     .contact h2 {
       margin-bottom: 20px;
       color: #00d1ff;
-      font-size: 2em; /* Ajustado */
+      font-size: 2em; 
     }
 
     .contact p {
@@ -277,26 +287,26 @@
     }
 
     .contact form {
-      max-width: 600px; /* Aumentado */
+      max-width: 600px; 
       margin: 0 auto;
       text-align: left;
     }
 
     .contact input, .contact textarea {
       width: 100%;
-      padding: 15px; /* Aumentado */
-      margin-bottom: 20px; /* Aumentado */
-      border: 1px solid #333; /* Borda sutil */
+      padding: 15px; 
+      margin-bottom: 20px; 
+      border: 1px solid #333; 
       border-radius: 5px;
       font-size: 1em;
-      background-color: #222; /* Fundo escuro para campos */
-      color: #fff; /* Texto branco */
+      background-color: #222; 
+      color: #fff; 
     }
     .contact input::placeholder, .contact textarea::placeholder {
-        color: #888; /* Cor do placeholder */
+        color: #888; 
     }
 
-    .contact button[type="submit"] { /* Especificidade para o botão de envio */
+    .contact button[type="submit"] { 
       background: #28a745;
       padding: 15px 30px;
       border: none;
@@ -314,7 +324,7 @@
       transform: translateY(-2px);
     }
 
-    .contact .whatsapp-btn, .contact .calendar-btn { /* Estilo comum para botões de ação */
+    .contact .whatsapp-btn, .contact .calendar-btn { 
         margin-top: 15px;
     }
     
@@ -350,7 +360,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 10px; /* Espaço entre o botão e o iframe */
+      margin-bottom: 10px; 
     }
     #chatbot-toggle:hover {
         background-color: #005bb5;
@@ -358,12 +368,12 @@
 
     #chatbot-iframe-container {
       width: 350px;
-      height: 500px; /* Altura padrão */
-      max-height: 80vh; /* Limitar altura em telas menores */
+      height: 500px; 
+      max-height: 80vh; 
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-      display: none; /* Começa escondido */
+      display: none; 
     }
     
     #chatbot-iframe-container.visible {
@@ -379,14 +389,14 @@
     /* Rodapé */
     footer {
       background: #1a1a1a;
-      padding: 30px; /* Aumentado padding */
+      padding: 30px; 
       text-align: center;
       font-size: 0.9em;
       line-height: 1.6;
     }
 
     footer p {
-      margin: 8px 0; /* Espaçamento ajustado */
+      margin: 8px 0; 
     }
 
     footer .whatsapp-footer {
@@ -394,7 +404,7 @@
       padding: 10px 20px;
       border-radius: 5px;
       display: inline-block;
-      margin-top: 15px; /* Aumentado espaço */
+      margin-top: 15px; 
       font-weight: bold;
       transition: background 0.3s, transform 0.2s;
     }
@@ -414,8 +424,8 @@
         margin-bottom: 10px;
       }
       header nav a {
-        margin: 0 10px; /* Ajuste de margem para nav */
-        display: block; /* Links do menu em bloco em telas pequenas */
+        margin: 0 10px; 
+        display: block; 
         padding: 5px 0;
         text-align: center;
       }
@@ -426,17 +436,20 @@
         font-size: 1em;
       }
       .features {
-        grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
+        grid-template-columns: 1fr; 
       }
       #chatbot-iframe-container {
-        width: calc(100vw - 40px); /* Largura total menos paddings */
+        width: calc(100vw - 40px); 
         height: 70vh;
       }
-      .testimonial-container { /* Se for usar JS para o carrossel, ajuste aqui */
-        /* flex-direction: column; */ /* Se quiser empilhar verticalmente em mobile */
+      .detailed-solutions h2 {
+        font-size: 1.8em;
       }
-      .testimonial {
-        padding: 20px;
+      .solution-description h3 {
+        font-size: 1.5em;
+      }
+       .solution-description p {
+        font-size: 1em;
       }
     }
     @media (max-width: 480px) {
@@ -456,7 +469,7 @@
         .hero h2 {
             font-size: 1.8em;
         }
-        .video-section h2, .testimonials h2, .contact h2 {
+        .testimonials h2, .contact h2 {
             font-size: 1.6em;
         }
     }
@@ -473,8 +486,7 @@
     <nav>
       <a href="#hero">Início</a>
       <a href="#features">Recursos</a>
-      <a href="#solucoes-video">Soluções</a>
-      <a href="#testimonials">Depoimentos</a>
+      <a href="#nossas-solucoes">Nossas Soluções</a> <a href="#testimonials">Depoimentos</a>
       <a href="#contato">Contato</a>
     </nav>
   </header>
@@ -484,8 +496,7 @@
       <h2>Segurança Inteligente para Condomínios e Cidades</h2>
       <p>Transformamos câmeras comuns em sistemas inteligentes com monitoramento, reconhecimento facial, análise comportamental e integração direta com programas de segurança pública.</p>
       <a class="btn" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3qIXPcL4ja9E0xM1ikf8lWP_n1wJmBEOwCPCDTQXmMjv5Qc3wDte7rcmk7ymTPm_bnyWNvTTn_?gv=true" target="_blank">Agende uma Demonstração</a>
-      <a class="btn" href="videos/VÍDEO SOFTWARE CONDOMÍNIOS.MP4" target="_blank">Assista ao Vídeo</a>
-    </div>
+      </div>
   </section>
 
   <section class="features" id="features">
@@ -511,10 +522,9 @@
     </div>
     <div class="feature">
       <h3>Postes Inteligentes (Street)</h3>
-      <p>Soluções de iluminação e vigilância integradas para cidades e grandes áreas, promovendo ambientes urbanos mais seguros e conectados.</p>
+      <p>Iluminação e vigilância integradas para cidades e grandes áreas, promovendo ambientes urbanos mais seguros e conectados.</p>
       <img src="imagens/POSTES STREET - OURO.jpg" alt="Postes Street Inteligentes - Ouro">
-      <a class="btn" href="videos/VÍDEO NOSSAS SOLUÇÕES.MP4" target="_blank" style="margin-top: 15px;">Ver Soluções em Postes</a>
-    </div>
+      </div>
     <div class="feature">
       <h3>Soluções com Módulos Inteligentes</h3>
       <p>Descubra a versatilidade e eficiência dos nossos módulos inteligentes aplicados em diversas soluções de segurança.</p>
@@ -527,22 +537,18 @@
     </div>
   </section>
 
-  <section class="video-section" id="solucoes-video">
-    <h2>Nossas Soluções em Ação</h2>
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
-      
-      <div class="video-showcase">
-        <h3>Software para Condomínios Seguros</h3>
-        <a href="videos/VÍDEO SOFTWARE CONDOMÍNIOS.MP4" target="_blank" class="video-container">
-          <img src="imagens/thumbnail-video-condominios.jpg" alt="Vídeo Software para Condomínios">
-        </a>
+  <section class="detailed-solutions" id="nossas-solucoes">
+    <h2>Conheça Nossas Soluções em Detalhes</h2>
+    <div class="solutions-container">
+      <div class="solution-description">
+        <h3><span class="emoji">🗼</span>Postes Street Inteligentes</h3>
+        <p><strong>Suas sentinelas urbanas 24/7!</strong> Os Postes Street SegD’boa são mais que iluminação: são guardiões tecnológicos que vigiam a cidade incessantemente. Equipados com câmeras de alta definição e Inteligência Artificial (IA) de ponta, eles analisam o ambiente em tempo real.</p>
+        <p>Ao detectar qualquer atividade fora do comum ou suspeita, um alerta é enviado 瞬時に às forças de segurança competentes. 🚨 Isso permite uma resposta ágil e precisa, combatendo a criminalidade de forma proativa e diminuindo drasticamente as ocorrências. Uma solução preventiva e eficaz, onde nada passa despercebido, para cidades verdadeiramente mais seguras. ✨</p>
       </div>
-
-      <div class="video-showcase">
-        <h3>Postes Street Inteligentes e Soluções Urbanas</h3>
-         <a href="videos/VÍDEO NOSSAS SOLUÇÕES.MP4" target="_blank" class="video-container">
-          <img src="imagens/thumbnail-video-postes-solucoes.jpg" alt="Vídeo Postes Street e Soluções">
-        </a>
+      <div class="solution-description">
+        <h3><span class="emoji">🏘️</span>Condomínio Seguro Inteligente</h3>
+        <p><strong>Elevamos a segurança do seu condomínio a um novo patamar!</strong> Aproveitamos as câmeras de segurança já existentes no seu condomínio, sejam elas internas ou externas, e as integramos à nossa poderosa Solução "Condomínio Seguro". Este software, turbinado com Inteligência Artificial (IA), assume o controle.</p>
+        <p>O sistema monitora continuamente todos os acessos e movimentações. 🧐 Caso uma pessoa não autorizada tente adentrar o local, ou se um comportamento suspeito for identificado, um alerta é disparado instantaneamente para a equipe de monitoramento ou portaria do condomínio. 🛡️ Assim, os profissionais de segurança podem intervir imediatamente, neutralizando qualquer ameaça antes que ela se concretize e garantindo a paz e a proteção de todos os moradores. 🔒</p>
       </div>
     </div>
   </section>
@@ -563,7 +569,7 @@
         <span>- Representante Municipal, Cidade Gama</span>
       </div>
     </div>
-    </section>
+  </section>
 
   <section class="contact" id="contato">
     <h2>Fale Conosco</h2>
@@ -602,32 +608,28 @@
   chatbotToggle.addEventListener('click', () => {
     chatbotIframeContainer.classList.toggle('visible');
     if (chatbotIframeContainer.classList.contains('visible')) {
-      chatbotToggle.textContent = '✕'; // Mudar para ícone de fechar
+      chatbotToggle.textContent = '✕'; 
     } else {
-      chatbotToggle.textContent = '💬'; // Mudar para ícone de chat
+      chatbotToggle.textContent = '💬'; 
     }
   });
 
   // Script para o ano atual no rodapé
   document.getElementById('currentYear').textContent = new Date().getFullYear();
   
-  // Script básico para carrossel de depoimentos (opcional, pode ser expandido)
+  // Script básico para carrossel de depoimentos
   const testimonialsContainer = document.querySelector('.testimonial-container');
   const testimonials = Array.from(document.querySelectorAll('.testimonial'));
-  let currentTestimonial = 0;
+  let currentTestimonialIdx = 0;
 
-  function showTestimonial(index) {
-      testimonialsContainer.style.transform = `translateX(-${index * 100}%)`;
+  function showNextTestimonial() {
+    currentTestimonialIdx = (currentTestimonialIdx + 1) % testimonials.length;
+    testimonialsContainer.style.transform = `translateX(-${currentTestimonialIdx * 100}%)`;
   }
 
-  // Exemplo: Avançar automaticamente a cada 7 segundos
-  // setInterval(() => {
-  //    currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-  //    showTestimonial(currentTestimonial);
-  // }, 7000);
-  // Para um carrossel mais robusto, considere usar os botões Prev/Next e mais lógica.
-  // Se você reativar a animação CSS, este script de carrossel pode não ser necessário ou precisar de ajustes.
-
+  if (testimonials.length > 1) { // Only run interval if there's more than one testimonial
+     setInterval(showNextTestimonial, 7000); // Muda a cada 7 segundos
+  }
 </script>
 
 </body>
