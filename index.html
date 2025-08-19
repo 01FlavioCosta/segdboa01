@@ -1,636 +1,255 @@
-<!DOCTYPE html>
-<html lang="pt">
+<!doctype html>
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>SegD’boa - Segurança Inteligente para Cidades e Condomínios</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SegD’Boa | IA e tecnologia transformando cidades em Smart Cities</title>
+  <meta name="description" content="Segurança pública com IA, postes inteligentes, soluções para cidadãos e condomínios e +14 subsetores de Smart City (polo tecnológico, usina solar, data center, conectividade, educação bilíngue, incentivos e bairros do futuro)." />
+  <meta property="og:title" content="SegD’Boa – Smart City & Segurança Pública com IA" />
+  <meta property="og:description" content="Do bairro ao município inteiro: plataforma modular que integra segurança, condomínios e +14 subsetores." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="imagens/LOGO-SEGDBOA-SMARTCITY.jpg" />
+  <meta name="theme-color" content="#00f0ff" />
   <style>
-    /* Reset e configurações básicas */
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
 
-    body, html {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0d0d0d;
-      color: #fff;
-      scroll-behavior: smooth;
+    :root{
+      --bg:#0b0c12;--panel:#101320;--txt:#e8f6ff;--muted:#9fb3c8;--line:rgba(255,255,255,.08);
+      --pri:#00f0ff;--sec:#ff0077;--ok:#00ffa3;--accent:#8b5cf6;
+      --grad:radial-gradient(900px 600px at 20% -10%, rgba(0,240,255,.18), transparent 60%),
+             radial-gradient(800px 500px at 90% 0%, rgba(255,0,119,.12), transparent 60%),
+             linear-gradient(180deg, rgba(0,0,0,.0), rgba(0,0,0,.4));
     }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;scroll-behavior:smooth}
+    a{color:var(--pri);text-decoration:none}
+    .container{max-width:1180px;margin:0 auto;padding:0 18px}
     /* Header */
-    header {
-      background: #1a1a1a;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      position: sticky; 
-      top: 0;
-      z-index: 100; 
-    }
+    header{position:sticky;top:0;z-index:60;background:rgba(11,12,18,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;gap:12px;align-items:center;font-weight:800;letter-spacing:.2px}
+    .brand img{width:44px;height:44px;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:#111}
+    .menu{display:flex;gap:16px;align-items:center}
+    .menu a{padding:8px 10px;color:var(--muted)}
+    .menu a:hover{color:var(--txt)}
+    .cta{display:inline-block;padding:10px 16px;border-radius:12px;font-weight:700}
+    .cta-primary{background:var(--pri);color:#001018;box-shadow:0 0 24px rgba(0,240,255,.25)}
+    .cta-secondary{background:var(--sec);color:#fff;box-shadow:0 0 24px rgba(255,0,119,.25)}
 
-    header .logo {
-      display: flex;
-      align-items: center;
-    }
+    /* Hero */
+    #hero{position:relative;min-height:92vh;display:grid;place-items:center;background-image:var(--grad), url('imagens/banner-hero.jpg');background-size:cover;background-position:center}
+    .hero-wrap{padding:70px 0;text-align:center}
+    .badge{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);padding:8px 12px;border-radius:999px;color:var(--muted);background:rgba(255,255,255,.04)}
+    .title{font-size:46px;line-height:1.05;margin:18px 0 10px;text-shadow:0 0 30px rgba(0,240,255,.25)}
+    .subtitle{font-size:20px;color:#cfe7ff;max-width:900px;margin:0 auto}
+    .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px;justify-content:center}
+    .hero-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+    .hcard{background:rgba(255,255,255,.04);border:1px solid var(--line);padding:14px 16px;border-radius:14px}
 
-    header .logo img {
-      max-width: 80px; 
-      margin-right: 10px;
-    }
+    /* Sections */
+    section{padding:80px 0;border-top:1px solid var(--line)}
+    h2.section-title{font-size:34px;margin:0 0 14px}
+    p.lead{color:var(--muted);font-size:18px;max-width:880px}
+    .grid{display:grid;gap:18px}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+    .card .img{height:200px;background:#0f1220 center/cover no-repeat}
+    .card .body{padding:16px}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line);color:#d7eaff;font-size:12px}
+    ul.clean{list-style:none;padding:0;margin:12px 0}
+    ul.clean li{margin:6px 0;color:#d9e7f5}
+    .check::before{content:"✔ ";color:var(--ok)}
+    .sep{height:1px;background:linear-gradient(90deg,transparent,rgba(0,240,255,.35),transparent);margin:20px 0}
 
-    header .logo h1 {
-      font-size: 1.5em; 
-      margin: 0;
-      color: #00d1ff;
-    }
+    /* Testimonials */
+    .testimonials{background:#0f111a;overflow:hidden;text-align:center}
+    .testimonial-container{display:flex;transition:transform .5s ease-in-out}
+    .testimonial{min-width:100%;padding:20px 40px}
+    .testimonial p{font-size:1.1em;line-height:1.7}
+    .testimonial span{display:block;margin-top:12px;color:var(--pri);font-weight:700}
 
-    header nav {
-      font-size: 0.9em; 
-    }
+    /* Contact */
+    .contact form{max-width:600px;margin:0 auto;text-align:left}
+    .contact input,.contact textarea{width:100%;padding:14px;margin-bottom:16px;border:1px solid #2a3142;border-radius:10px;background:#151a28;color:#fff}
+    .contact input::placeholder,.contact textarea::placeholder{color:#8aa0b8}
+    .btn{background:#0075ff;padding:12px 22px;color:#fff;border:none;border-radius:10px;font-weight:700;display:inline-block}
+    .btn:hover{filter:brightness(1.1)}
+    .whatsapp-btn{background:#25D366}
+    .calendar-btn{background:#f0ad4e}
 
-    header nav a {
-      margin-left: 15px; 
-      color: #fff;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
+    /* Footer */
+    footer{padding:40px 0;color:#a9c2d8;background:#0f1118}
+    .small{font-size:12px;color:#9fb3c8}
 
-    header nav a:hover {
-      color: #0075ff;
-    }
-
-    /* Seção Hero */
-    .hero {
-      position: relative;
-      background: url('imagens/banner-hero.jpg') no-repeat center center/cover; /* Certifique-se que esta imagem exista */
-      padding: 100px 20px; 
-      text-align: center;
-      min-height: 70vh; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.65); 
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .hero h2 {
-      font-size: 2.5em; 
-      margin-bottom: 20px;
-      color: #00d1ff;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.7); 
-    }
-
-    .hero p {
-      font-size: 1.1em; 
-      margin-bottom: 30px; 
-      line-height: 1.6;
-    }
-
-    .btn {
-      background: #0075ff;
-      padding: 12px 25px; 
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      transition: background 0.3s, transform 0.2s;
-      margin: 5px;
-      display: inline-block;
-      font-weight: bold;
-    }
-
-    .btn:hover {
-      background: #005bb5;
-      transform: translateY(-2px); 
-    }
-
-    /* Seção de Recursos */
-    .features {
-      background: #141414;
-      padding: 60px 20px;
-      display: grid;
-      grid-gap: 30px;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    }
-
-    .feature {
-      background: #1a1a1a;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
-      text-align: center;
-      display: flex; 
-      flex-direction: column; 
-      justify-content: space-between; 
-    }
-    
-    .feature img, .feature video { 
-        max-width: 100%;
-        height: auto;
-        border-radius: 5px;
-        margin-top: 15px;
-    }
-
-    .feature h3 {
-      margin-top:0; 
-      margin-bottom: 15px;
-      color: #0075ff;
-      font-size: 1.4em; 
-    }
-
-    .feature p {
-      font-size: 1em;
-      margin-bottom: 20px;
-      flex-grow: 1; 
-    }
-    
-    /* Seção Nossas Soluções Detalhadas */
-    .detailed-solutions {
-      background: #101010; /* Um pouco diferente para destaque */
-      padding: 60px 20px;
-    }
-
-    .detailed-solutions h2 {
-      text-align: center;
-      font-size: 2.2em;
-      margin-bottom: 50px;
-      color: #00d1ff;
-    }
-
-    .solutions-container {
-      display: flex;
-      flex-direction: column; /* Empilha por padrão */
-      gap: 30px;
-    }
-
-    .solution-description {
-      background: #1c1c1c; /* Cor de card */
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.6);
-      border-left: 5px solid #0075ff; /* Detalhe de cor */
-    }
-
-    .solution-description h3 {
-      color: #00aaff; /* Um azul um pouco mais vibrante */
-      font-size: 1.8em;
-      margin-top: 0;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-    }
-    
-    .solution-description h3 .emoji {
-        font-size: 1.5em; /* Tamanho do emoji */
-        margin-right: 10px;
-    }
-
-    .solution-description p {
-      font-size: 1.1em;
-      line-height: 1.7;
-      color: #f0f0f0; /* Cor de texto clara e legível */
-      margin-bottom: 10px;
-    }
-     .solution-description p:last-child {
-      margin-bottom: 0;
-    }
-
-    @media (min-width: 992px) { /* Para telas maiores, colocar lado a lado */
-      .solutions-container {
-        flex-direction: row; /* Lado a lado em telas maiores */
-      }
-      .solution-description {
-        flex: 1; /* Distribui o espaço igualmente */
-      }
-    }
-
-
-    /* Seção de Depoimentos (Carousel) */
-    .testimonials {
-      background: #1a1a1a;
-      padding: 60px 20px;
-      position: relative;
-      overflow: hidden;
-      text-align: center;
-    }
-
-    .testimonials h2 {
-      margin-bottom: 40px;
-      font-size: 2em; 
-      color: #00d1ff;
-    }
-
-    .testimonial-container {
-      display: flex;
-      transition: transform 0.5s ease-in-out; 
-    }
-
-    .testimonial {
-      min-width: 100%; 
-      padding: 20px 40px; 
-      box-sizing: border-box;
-    }
-
-    .testimonial p {
-      font-size: 1.15em; 
-      font-style: italic;
-      line-height: 1.7;
-      margin-bottom: 10px;
-    }
-
-    .testimonial span {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-      color: #0075ff;
-    }
-
-    /* Seção de Contato */
-    .contact {
-      background: #0d0d0d;
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    .contact h2 {
-      margin-bottom: 20px;
-      color: #00d1ff;
-      font-size: 2em; 
-    }
-
-    .contact p {
-      margin-bottom: 30px;
-      font-size: 1.1em;
-    }
-
-    .contact form {
-      max-width: 600px; 
-      margin: 0 auto;
-      text-align: left;
-    }
-
-    .contact input, .contact textarea {
-      width: 100%;
-      padding: 15px; 
-      margin-bottom: 20px; 
-      border: 1px solid #333; 
-      border-radius: 5px;
-      font-size: 1em;
-      background-color: #222; 
-      color: #fff; 
-    }
-    .contact input::placeholder, .contact textarea::placeholder {
-        color: #888; 
-    }
-
-    .contact button[type="submit"] { 
-      background: #28a745;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 5px;
-      color: #fff;
-      font-size: 1em;
-      font-weight: bold;
-      cursor: pointer;
-      width: 100%;
-      transition: background 0.3s, transform 0.2s;
-    }
-
-    .contact button[type="submit"]:hover {
-      background: #218838;
-      transform: translateY(-2px);
-    }
-
-    .contact .whatsapp-btn, .contact .calendar-btn { 
-        margin-top: 15px;
-    }
-    
-    .contact .whatsapp-btn {
-      background: #25D366;
-    }
-
-    .contact .whatsapp-btn:hover {
-      background: #1ebe5d;
-    }
-
-    /* Chatbot Fixo e Botão de Toggle */
-    #chatbot-container {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
-
-    #chatbot-toggle {
-      background-color: #0075ff;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 28px;
-      cursor: pointer;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 10px; 
-    }
-    #chatbot-toggle:hover {
-        background-color: #005bb5;
-    }
-
-    #chatbot-iframe-container {
-      width: 350px;
-      height: 500px; 
-      max-height: 80vh; 
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-      display: none; 
-    }
-    
-    #chatbot-iframe-container.visible {
-        display: block;
-    }
-
-    #chatbot-iframe-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    /* Rodapé */
-    footer {
-      background: #1a1a1a;
-      padding: 30px; 
-      text-align: center;
-      font-size: 0.9em;
-      line-height: 1.6;
-    }
-
-    footer p {
-      margin: 8px 0; 
-    }
-
-    footer .whatsapp-footer {
-      background: #25D366;
-      padding: 10px 20px;
-      border-radius: 5px;
-      display: inline-block;
-      margin-top: 15px; 
-      font-weight: bold;
-      transition: background 0.3s, transform 0.2s;
-    }
-
-    footer .whatsapp-footer:hover {
-      background: #1ebe5d;
-      transform: translateY(-2px);
-    }
-
-    /* Media queries para responsividade adicional */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        padding: 15px;
-      }
-      header .logo {
-        margin-bottom: 10px;
-      }
-      header nav a {
-        margin: 0 10px; 
-        display: block; 
-        padding: 5px 0;
-        text-align: center;
-      }
-      .hero h2 {
-        font-size: 2em;
-      }
-      .hero p {
-        font-size: 1em;
-      }
-      .features {
-        grid-template-columns: 1fr; 
-      }
-      #chatbot-iframe-container {
-        width: calc(100vw - 40px); 
-        height: 70vh;
-      }
-      .detailed-solutions h2 {
-        font-size: 1.8em;
-      }
-      .solution-description h3 {
-        font-size: 1.5em;
-      }
-       .solution-description p {
-        font-size: 1em;
-      }
-    }
-    @media (max-width: 480px) {
-        header .logo img {
-            max-width: 60px;
-        }
-        header .logo h1 {
-            font-size: 1.3em;
-        }
-        .btn {
-            padding: 10px 20px;
-            font-size: 0.9em;
-        }
-        .hero {
-            padding: 60px 20px;
-        }
-        .hero h2 {
-            font-size: 1.8em;
-        }
-        .testimonials h2, .contact h2 {
-            font-size: 1.6em;
-        }
-    }
-
+    /* Responsive */
+    @media(max-width:960px){.grid-2{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr}.title{font-size:36px}.subtitle{font-size:18px}.hero-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){.hero-grid{grid-template-columns:1fr}.menu{display:none}}
   </style>
 </head>
 <body>
-
   <header>
-    <div class="logo">
-      <img src="imagens/NOVA OGO SMAT CIT.png" alt="Logo SegD'boa">
-      <h1>SegD'boa</h1>
+    <div class="container nav">
+      <div class="brand">
+        <!-- TROCAR o nome do arquivo abaixo pelo da sua logo. Recomendo renomear o arquivo para LOGO-SEGDBOA-SMARTCITY.jpg sem espaços/acentos -->
+        <img src="imagens/LOGO-SEGDBOA-SMARTCITY.jpg" alt="Logo SegD’Boa" />
+        <span>SegD’Boa • Smart City</span>
+      </div>
+      <nav class="menu">
+        <a href="#hero">Início</a>
+        <a href="#prefeituras">Prefeituras</a>
+        <a href="#cidadania">Cidadãos & Condomínios</a>
+        <a href="#modulos-smartcity">Módulos (+14)</a>
+        <a href="#testimonials">Depoimentos</a>
+        <a href="#contato">Contato</a>
+        <a class="cta cta-primary" href="#contato">Agendar Reunião</a>
+      </nav>
     </div>
-    <nav>
-      <a href="#hero">Início</a>
-      <a href="#features">Recursos</a>
-      <a href="#nossas-solucoes">Nossas Soluções</a> <a href="#testimonials">Depoimentos</a>
-      <a href="#contato">Contato</a>
-    </nav>
   </header>
 
-  <section class="hero" id="hero">
-    <div class="hero-content">
-      <h2>Segurança Inteligente para Cidades e Condomínios</h2>
-      <p>Transformamos câmeras comuns em sistemas inteligentes com vídeo monitoramento, reconhecimento facial, análise comportamental e integração direta com programas de segurança pública.</p>
-      <a class="btn" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3qIXPcL4ja9E0xM1ikf8lWP_n1wJmBEOwCPCDTQXmMjv5Qc3wDte7rcmk7ymTPm_bnyWNvTTn_?gv=true" target="_blank">Agende uma Demonstração</a>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container hero-wrap">
+      <div class="badge">🔒 IA • LPR • VMS • Postes Inteligentes</div>
+      <h1 class="title">SegD’Boa: IA e tecnologia transformando cidades em Smart Cities</h1>
+      <p class="subtitle">Do bairro ao município inteiro: segurança pública, condomínios e <strong>+14 subsetores</strong> estratégicos. Integração fim‑a‑fim para Prefeituras, Indústria e Cidadãos.</p>
+      <div class="hero-cta">
+        <a class="cta cta-primary" href="#prefeituras">👨‍💼 Prefeituras</a>
+        <a class="cta cta-secondary" href="#cidadania">🏠 Cidadãos & Condomínios</a>
+        <a class="cta" style="border:1px solid var(--line)" href="#modulos-smartcity">🌎 Conheça os módulos</a>
+        <a class="cta" style="border:1px solid var(--line)" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3qIXPcL4ja9E0xM1ikf8lWP_n1wJmBEOwCPCDTQXmMjv5Qc3wDte7rcmk7ymTPm_bnyWNvTTn_?gv=true" target="_blank">📅 Agendar Demonstração</a>
       </div>
-  </section>
-
-  <section class="features" id="features">
-    <div class="feature">
-      <h3>Vídeo Monitoramento Inteligente</h3>
-      <p>Sistema avançado que detecta movimentos e envia alertas em tempo real, potencializando a segurança do seu espaço.</p>
-      <img src="imagens/MONITORAMENTO INTELIGENTE.jpg" alt="Monitoramento Inteligente">
-    </div>
-    <div class="feature">
-      <h3>Reconhecimento Facial</h3>
-      <p>Identificação automática e precisa para controle de acesso avançado e maior segurança em ambientes restritos.</p>
-      <img src="imagens/RECONHECIMENTO FACIAL.jpg" alt="Reconhecimento Facial">
-    </div>
-    <div class="feature">
-      <h3>Analíticos LPR e Comportamental</h3>
-      <p>Utilizamos leitura de placas (LPR) e análise de padrões comportamentais para uma segurança proativa e preventiva.</p>
-      <img src="imagens/ANALÍTICOS LPR E COMPORTAMENTAL.jpg" alt="Analíticos LPR e Comportamental">
-    </div>
-    <div class="feature">
-      <h3>Integração com Segurança Pública</h3>
-      <p>Conexão direta com órgãos de segurança para respostas rápidas e eficientes em situações críticas.</p>
-      <img src="imagens/INTEGRAÇÃO COM OS PROGRAMAS DE SEGURANÇA PÚBLICA.jpg" alt="Integração com Segurança Pública">
-    </div>
-    <div class="feature">
-      <h3>Postes Inteligentes SegD´boa (Street)</h3>
-      <p>Atenção e vigilância integradas para cidades e grandes áreas, promovendo ambientes urbanos mais seguros e conectados.</p>
-      <img src="imagens/POSTES STREET SEGD´BOA - OURO.jpg" alt="Postes Street SegD´boa Inteligentes - Ouro">
-      </div>
-    <div class="feature">
-      <h3>Soluções com Módulos Inteligentes</h3>
-      <p>Descubra a versatilidade e eficiência dos nossos módulos inteligentes aplicados em diversas soluções de segurança.</p>
-      <a class="btn" href="videos/REELS DO MÓDULO INTELIGENTE.mp4" target="_blank">Assistir Vídeo dos Módulos</a>
-    </div>
-    <div class="feature">
-      <h3>Cartilha Solução SegD’Boa - Muralha Paulista</h3>
-      <p>Conheça nossa participação e integração com o Programa Muralha Paulista através da nossa cartilha informativa em vídeo.</p>
-      <a class="btn" href="videos/VÍDEO CARTILHA SOLUÇÃO SEGD´BOA PROGRAMA MURALHA PAULISTA.mp4" target="_blank">Assistir Vídeo da Cartilha</a>
-    </div>
-  </section>
-
-  <section class="detailed-solutions" id="nossas-solucoes">
-    <h2>Conheça Nossas Soluções em Detalhes</h2>
-    <div class="solutions-container">
-      <div class="solution-description">
-        <h3><span class="emoji">🗼</span>Postes Street SegD´boa Inteligentes</h3>
-        <p><strong>Suas sentinelas urbanas 24/7!</strong> Os Postes Street SegD’boa são mais que iluminação: são guardiões tecnológicos que vigiam a cidade incessantemente. Equipados com câmeras de alta definição e Inteligência Artificial (IA) de ponta, eles analisam o ambiente em tempo real.</p>
-        <p>Ao detectar qualquer atividade fora do comum ou suspeita, um alerta é enviado às forças de segurança competentes. 🚨 Isso permite uma resposta ágil e precisa, combatendo a criminalidade de forma proativa e diminuindo drasticamente as ocorrências. Uma solução preventiva e eficaz, onde nada passa despercebido, para cidades verdadeiramente mais seguras. ✨</p>
-      </div>
-      <div class="solution-description">
-        <h3><span class="emoji">🏘️</span>Condomínio Seguro Inteligente</h3>
-        <p><strong>Elevamos a segurança do seu condomínio a um novo patamar!</strong> Aproveitamos as câmeras de segurança já existentes no seu condomínio, sejam elas internas ou externas, e as integramos à nossa poderosa Solução "Condomínio Seguro". Este software, turbinado com Inteligência Artificial (IA), assume o controle.</p>
-        <p>O sistema monitora continuamente todos os acessos e movimentações. 🧐 Caso uma pessoa não autorizada tente adentrar o local, ou se um comportamento suspeito for identificado, um alerta é disparado instantaneamente para a equipe de monitoramento ou portaria do condomínio. 🛡️ Assim, os profissionais de segurança podem intervir imediatamente, neutralizando qualquer ameaça antes que ela se concretize e garantindo a paz e a proteção de todos os moradores. 🔒</p>
+      <div class="hero-grid">
+        <div class="hcard">📈 Redução de indicadores com IA integrada</div>
+        <div class="hcard">🚨 Sala de Operações + Forças de Segurança</div>
+        <div class="hcard">🏙️ Bairros e condomínios mais seguros</div>
       </div>
     </div>
   </section>
 
+  <!-- PREFEITURAS / MACRO -->
+  <section id="prefeituras">
+    <div class="container">
+      <h2 class="section-title">Soluções para Prefeituras (Macro)</h2>
+      <p class="lead">Plataforma modular para cidades: postes inteligentes com IA, leitura de placas (LPR), reconhecimento facial, análise comportamental, VMS e Sala de Operações. Integração com forças de segurança e outros 14 subsetores para impulsionar desenvolvimento econômico e qualidade de vida.</p>
+      <div class="grid grid-3" style="margin-top:20px">
+        <div class="card"><div class="img" style="background-image:url('imagens/pref-sala-operacoes.jpg')"></div><div class="body"><span class="pill">Segurança Pública</span><h3>Centro de Comando</h3><ul class="clean"><li class="check">Monitoramento 24/7</li><li class="check">Cadeia de custódia</li><li class="check">Integração com GCM/PM</li></ul></div></div>
+        <div class="card"><div class="img" style="background-image:url('imagens/pref-poste-ia.jpg')"></div><div class="body"><span class="pill">Infraestrutura</span><h3>Postes Street SegD’Boa IA</h3><ul class="clean"><li class="check">Cobertura em vias estratégicas</li><li class="check">Analytics embarcado</li><li class="check">Expansão modular por bairro</li></ul></div></div>
+        <div class="card"><div class="img" style="background-image:url('imagens/pref-parceria.jpg')"></div><div class="body"><span class="pill">Gestão</span><h3>Modelos de Parceria</h3><ul class="clean"><li class="check">Patrocínios e convênios</li><li class="check">Captação com bancos e editais</li><li class="check">Sustentabilidade financeira</li></ul></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CIDADANIA / MICRO -->
+  <section id="cidadania">
+    <div class="container">
+      <h2 class="section-title">Do macro ao micro: soluções para cidadãos, ruas e condomínios</h2>
+      <p class="lead">Atendemos ruas, bairros, áreas comerciais, industriais, bancárias e rurais. Podemos atuar rua a rua, com <strong>módulos de 1 ou 2 câmeras</strong> ou com <strong>câmeras inteligentes SegD’Boa</strong> nas fachadas das residências. Soluções completas para condomínios.</p>
+      <div class="grid grid-3" style="margin-top:20px">
+        <div class="card"><div class="img" style="background-image:url('imagens/micro-modulo-2cameras.jpg')"></div><div class="body"><span class="pill">Módulos</span><h3>Módulos 1–2 Câmeras</h3><ul class="clean"><li class="check">Implantação rápida</li><li class="check">Cobertura pontual por rua</li><li class="check">Escala conforme a necessidade</li></ul></div></div>
+        <div class="card"><div class="img" style="background-image:url('imagens/micro-fachadas.jpg')"></div><div class="body"><span class="pill">Residências</span><h3>Câmeras em Fachadas</h3><ul class="clean"><li class="check">Integração ao VMS</li><li class="check">Alertas e evidências</li><li class="check">Benefício para toda a rua</li></ul></div></div>
+        <div class="card"><div class="img" style="background-image:url('imagens/micro-condominio.jpg')"></div><div class="body"><span class="pill">Condomínios</span><h3>Segurança Inteligente</h3><ul class="clean"><li class="check">Perímetro, acesso e áreas comuns</li><li class="check">Relatórios e histórico</li><li class="check">Integração com segurança pública</li></ul></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULOS SMART CITY (14 SUBSETORES) -->
+  <section id="modulos-smartcity">
+    <div class="container">
+      <h2 class="section-title">Módulos de Smart City (+14 subsetores)</h2>
+      <p class="lead">Além da Segurança Pública, entregamos módulos que aceleram inovação, energia limpa, conectividade, educação e urbanismo sustentável.</p>
+      <div class="sep"></div>
+      <div class="grid grid-3">
+        <div class="card"><div class="img" style="background-image:url('imagens/mod-polo-tecnologico.jpg')"></div><div class="body"><span class="pill">Desenvolvimento</span><h3>Polo Tecnológico</h3><p>Ecossistema de inovação e startups para gerar empregos qualificados.</p></div></div>
+        <div class="card"><div class="img" style="background-image:url('imagens/mod-usina-solar.jpg')"></div><div class="body"><span class="pill">Energia</span><h3>Usina Solar</h3><p>Energia limpa para equipamentos públicos e redução de custos.</p></div></div>
+        <div class="card"><div class="img" style="background-image:url('imagens/mod-data-center.jpg')"></div><div class="body"><span class="pill">Dados</span><h3>Data Center</h3><p>Infraestrutura segura para dados municipais e serviços digitais.</p></div></div>
+
+        <div class="card"><div class="img" style="background-image:url('imagens/mod-internet.jpg')"></div><div class="body"><span class="pill">Conectividade</span><h3>Internet de Alta Velocidade</h3><p>Backbone e acesso público/privado para escolas e serviços.</p></div></div>
+        <div class="card"><div class="img" style="background-image:url('imagens/mod-educacao-bilingue.jpg')"></div><div class="body"><span class="pill">Educação</span><h3>Inglês & Mandarim</h3><p>Educação bilíngue para preparar alunos para a nova economia.</p></div></div>
+        <div class="card"><div class="img" style="background-image:url('imagens/mod-intercambio.jpg')"></div><div class="body"><span class="pill">Integração</span><h3>Intercâmbio Brasil–China</h3><p>Parcerias acadêmicas e tecnológicas para acelerar resultados.</p></div></div>
+
+        <div class="card"><div class="img" style="background-image:url('imagens/mod-isencao.jpg')"></div><div class="body"><span class="pill">Incentivos</span><h3>Isenção de Impostos (30 anos)</h3><p>Ambiente favorável para atrair e reter investimentos.</p></div></div>
+        <div class="card"><div class="img" style="background-image:url('imagens/mod-concessao.jpg')"></div><div class="body"><span class="pill">Território</span><h3>Concessão de Terrenos (30 anos)</h3><p>Áreas para instalação de indústrias e hubs tecnológicos.</p></div></div>
+        <div class="card"><div class="img" style="background-image:url('imagens/mod-banco.jpg')"></div><div class="body"><span class="pill">Financiamento</span><h3>Banco de Investimento</h3><p>Estruturação financeira para projetos municipais estratégicos.</p></div></div>
+
+        <div class="card"><div class="img" style="background-image:url('imagens/mod-programas-regionais.jpg')"></div><div class="body"><span class="pill">Fomento</span><h3>Programas de Desenvolvimento Regional</h3><p>Captação de recursos e políticas de crescimento sustentável.</p></div></div>
+        <div class="card"><div class="img" style="background-image:url('imagens/mod-parque-robotica-iot.jpg')"></div><div class="body"><span class="pill">Indústria 4.0</span><h3>Parque Industrial Tecnológico</h3><p>Foco em Robótica e IoT para elevar a competitividade local.</p></div></div>
+        <div class="card"><div class="img" style="background-image:url('imagens/mod-bairro-tecnologico.jpg')"></div><div class="body"><span class="pill">Cidade</span><h3>Bairro Tecnológico</h3><p>Casas inteligentes, automação residencial e conectividade.</p></div></div>
+
+        <div class="card"><div class="img" style="background-image:url('imagens/mod-bairro-planejado.jpg')"></div><div class="body"><span class="pill">Urbanismo</span><h3>Bairro Planejado Sustentável</h3><p>Reúso de água, tratamento de esgoto, ruas largas, energia subterrânea.</p></div></div>
+        <div class="card"><div class="img" style="background-image:url('imagens/mod-bairro-futuro.jpg')"></div><div class="body"><span class="pill">Integração</span><h3>Bairro do Futuro</h3><p>Integra moradia, comércio, serviços e indústria com tecnologia.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
   <section class="testimonials" id="testimonials">
-    <h2>O que nossos clientes dizem</h2>
-    <div class="testimonial-container">
-      <div class="testimonial">
-        <p>"A tecnologia da SegD’boa revolucionou a segurança do nosso condomínio! O sistema é robusto, proativo e o suporte é excelente."</p>
-        <span>- Síndico Profissional, Condomínio Alpha</span>
-      </div>
-      <div class="testimonial">
-        <p>"O vídeo monitoramento inteligente e o reconhecimento facial trouxeram uma paz de espírito que não tínhamos antes. Realmente faz a diferença."</p>
-        <span>- Gestor de Segurança, Empresa Beta</span>
-      </div>
-      <div class="testimonial">
-        <p>"A integração com os programas de segurança pública é um diferencial incrível. Sentimos nossa cidade mais protegida."</p>
-        <span>- Representante da Guarda Municipal, Cidade Itararé</span>
+    <div class="container">
+      <h2 class="section-title">O que nossos clientes dizem</h2>
+      <div class="testimonial-container">
+        <div class="testimonial"><p>“A tecnologia da SegD’Boa elevou nossa segurança a outro nível.”</p><span>– Síndico, Condomínio Alpha</span></div>
+        <div class="testimonial"><p>“Reconhecimento facial e LPR trouxeram agilidade e paz de espírito.”</p><span>– Gestor de Segurança, Empresa Beta</span></div>
+        <div class="testimonial"><p>“Integração com programas públicos é um diferencial real.”</p><span>– GCM, Itararé</span></div>
       </div>
     </div>
   </section>
 
-  <section class="contact" id="contato">
-    <h2>Fale Conosco</h2>
-    <p>Entre em contato para solicitar uma demonstração, orçamento ou agendar uma visita técnica. Estamos prontos para atendê-lo!</p>
-    <form action="mailto:Flavio.costa@segdboa.com.br" method="post" enctype="text/plain">
-      <input type="text" name="nome" placeholder="Seu Nome Completo" required>
-      <input type="email" name="email" placeholder="Seu Melhor E-mail" required>
-      <input type="tel" name="telefone" placeholder="Seu Telefone (com DDD)" required>
-      <textarea name="mensagem" rows="5" placeholder="Como podemos te ajudar? Descreva sua necessidade."></textarea>
-      <button type="submit">Enviar Mensagem</button>
-    </form>
-    <a class="btn whatsapp-btn" href="https://wa.me/5519997767688" target="_blank">💬 Fale Conosco pelo WhatsApp</a>
-    <br>
-    <a class="btn calendar-btn" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3qIXPcL4ja9E0xM1ikf8lWP_n1wJmBEOwCPCDTQXmMjv5Qc3wDte7rcmk7ymTPm_bnyWNvTTn_?gv=true" target="_blank" style="background-color: #f0ad4e; margin-top:10px;">📅 Agende uma Visita/Demonstração</a>
+  <!-- CONTATO / CTA FINAL -->
+  <section id="contato" class="contact">
+    <div class="container">
+      <h2 class="section-title">Fale Conosco</h2>
+      <p class="lead">Solicite demonstração, orçamento ou agende uma visita técnica.</p>
+      <form action="mailto:Flavio.costa@segdboa.com.br" method="post" enctype="text/plain">
+        <input type="text" name="nome" placeholder="Seu Nome Completo" required>
+        <input type="email" name="email" placeholder="Seu Melhor E-mail" required>
+        <input type="tel" name="telefone" placeholder="Seu Telefone (com DDD)" required>
+        <textarea name="mensagem" rows="5" placeholder="Como podemos ajudar?"></textarea>
+        <button type="submit" class="btn">Enviar Mensagem</button>
+      </form>
+      <p style="margin-top:12px">
+        <a class="btn whatsapp-btn" href="https://wa.me/5519997767688" target="_blank">💬 Fale pelo WhatsApp</a>
+      </p>
+      <p>
+        <a class="btn calendar-btn" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3qIXPcL4ja9E0xM1ikf8lWP_n1wJmBEOwCPCDTQXmMjv5Qc3wDte7rcmk7ymTPm_bnyWNvTTn_?gv=true" target="_blank">📅 Agende Visita/Demonstração</a>
+      </p>
+    </div>
   </section>
 
-  <div id="chatbot-container">
-    <button id="chatbot-toggle">💬</button>
-    <div id="chatbot-iframe-container">
-      <iframe src="https://bots.easy-peasy.ai/bot/a51669b4-ed50-47d1-8675-d032f00fc050?_gl=1*zchzay*_gcl_au*MTQxMDM2MjIzNS4xNzMxMDAzMzY3" allow="microphone"></iframe>
+  <div id="chatbot-container" style="position:fixed;bottom:20px;right:20px;z-index:1000;display:flex;flex-direction:column;align-items:flex-end">
+    <button id="chatbot-toggle" style="background:#0075ff;color:#fff;border:none;border-radius:50%;width:60px;height:60px;font-size:28px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.3);margin-bottom:10px">💬</button>
+    <div id="chatbot-iframe-container" style="width:350px;height:500px;max-height:80vh;border-radius:10px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,.4);display:none">
+      <iframe src="https://bots.easy-peasy.ai/bot/a51669b4-ed50-47d1-8675-d032f00fc050?_gl=1*zchzay*_gcl_au*MTQxMDM2MjIzNS4xNzMxMDAzMzY3" allow="microphone" style="width:100%;height:100%;border:none"></iframe>
     </div>
   </div>
 
   <footer>
-    <p>&copy; <span id="currentYear"></span> SegD’boa Soluções Tecnológicas com IA. Todos os direitos reservados.</p>
-    <p>Sede: Rua Aureliano Guimarães, 172, Conjunto 311, Vila Andrade, São Paulo - SP, CEP 05727-160</p>
-    <p>E-mail: <a href="mailto:Flavio.costa@segdboa.com.br">Flavio.costa@segdboa.com.br</a></p>
-    <a class="whatsapp-footer" href="https://wa.me/5519997767688" target="_blank">Contato Comercial WhatsApp: (11) 94176-9758</a>
+    <div class="container">
+      <div class="sep"></div>
+      <p>© <span id="currentYear"></span> SegD’Boa • Smart City & Segurança Pública com IA. Todos os direitos reservados.</p>
+      <p>Sede: Rua Aureliano Guimarães, 172, Conj. 311, Vila Andrade, São Paulo - SP, CEP 05727-160</p>
+      <p>E-mail: <a href="mailto:Flavio.costa@segdboa.com.br">Flavio.costa@segdboa.com.br</a></p>
+      <p><a class="btn whatsapp-btn" href="https://wa.me/5519997767688" target="_blank">Contato Comercial WhatsApp</a></p>
+      <p class="small">LGPD: tratamento de dados para segurança pública (art. 4º, III) com cadeia de custódia.</p>
+    </div>
   </footer>
 
-<script>
-  // Script para o Toggle do Chatbot
-  const chatbotToggle = document.getElementById('chatbot-toggle');
-  const chatbotIframeContainer = document.getElementById('chatbot-iframe-container');
+  <script>
+    // Toggle chatbot
+    const chatbotToggle=document.getElementById('chatbot-toggle');
+    const chatbotIframeContainer=document.getElementById('chatbot-iframe-container');
+    chatbotToggle.addEventListener('click',()=>{
+      const vis = chatbotIframeContainer.style.display==='block';
+      chatbotIframeContainer.style.display = vis ? 'none' : 'block';
+      chatbotToggle.textContent = vis ? '💬' : '✕';
+    });
 
-  chatbotToggle.addEventListener('click', () => {
-    chatbotIframeContainer.classList.toggle('visible');
-    if (chatbotIframeContainer.classList.contains('visible')) {
-      chatbotToggle.textContent = '✕'; 
-    } else {
-      chatbotToggle.textContent = '💬'; 
-    }
-  });
+    // Ano atual
+    document.getElementById('currentYear').textContent=new Date().getFullYear();
 
-  // Script para o ano atual no rodapé
-  document.getElementById('currentYear').textContent = new Date().getFullYear();
-  
-  // Script básico para carrossel de depoimentos
-  const testimonialsContainer = document.querySelector('.testimonial-container');
-  const testimonials = Array.from(document.querySelectorAll('.testimonial'));
-  let currentTestimonialIdx = 0;
-
-  function showNextTestimonial() {
-    currentTestimonialIdx = (currentTestimonialIdx + 1) % testimonials.length;
-    testimonialsContainer.style.transform = `translateX(-${currentTestimonialIdx * 100}%)`;
-  }
-
-  if (testimonials.length > 1) { // Only run interval if there's more than one testimonial
-     setInterval(showNextTestimonial, 7000); // Muda a cada 7 segundos
-  }
-</script>
-
+    // Carrossel simples depoimentos
+    const testimonialsContainer=document.querySelector('.testimonial-container');
+    const testimonials=[...document.querySelectorAll('.testimonial')];
+    let idx=0;function next(){idx=(idx+1)%testimonials.length;testimonialsContainer.style.transform=`translateX(-${idx*100}%)`;}
+    if(testimonials.length>1){setInterval(next,7000)}
+  </script>
 </body>
 </html>
